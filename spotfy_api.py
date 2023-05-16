@@ -4,15 +4,17 @@ import os
 from dotenv import load_dotenv
 from spotipy.oauth2 import SpotifyOAuth
 
-CLIENT_ID = os.getenv("CLIENT_ID")
-CLIENT_SECRET = os.getenv("CLIENT_SECRET")
-REDIRECT_URI = os.getenv("REDIRECT_URI")
+load_dotenv()
+
+CLIENT_ID = "a481aa2eb31248c39a5ea009c28c1d9d"
+CLIENT_SECRET = "b1a9a9e2c64c41839a1126e8aa722ee6"
+REDIRECT_URI = "http://localhost:8000"
 
 # Configuraçãod
 scope = "playlist-modify-public"
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="CLIENT_ID",
-                     client_secret="CLIENT_SECRET", redirect_uri="REDIRECT_URI", scope=scope))
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
+                     client_secret=CLIENT_SECRET, redirect_uri=REDIRECT_URI, scope=scope))
 
 
 # Coletando as informações da playlist
