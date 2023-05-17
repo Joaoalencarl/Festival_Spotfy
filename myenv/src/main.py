@@ -18,8 +18,11 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id,
 artistas = input("Digite o nome dos artistas (separados por vírgula): ").split(',')
 
 # Criando a playlist
-nome_playlist = input("Digite o nome da playlist: ")
-playlist = sp.user_playlist_create(user='31fv3cdnt4rngts2i4gtdiproeta', name=nome_playlist, public=True)
+nome_playlist = input("Digite o nome do seu próximo evento: ")
+event_day = input("Digite a data do seu evento: ")
+playlist = sp.user_playlist_create(user='31fv3cdnt4rngts2i4gtdiproeta', name=nome_playlist,
+                                   description=f'Esquenta! o {nome_playlist} é dia {event_day}',
+                                   public=True)
 playlist_id = playlist['id']
 
 # Pesquisando e adicionando faixas à playlist
