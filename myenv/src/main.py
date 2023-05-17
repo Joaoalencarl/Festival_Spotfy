@@ -1,11 +1,14 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+from dotenv import load_dotenv
 import os
 
+load_dotenv()
+
 # Configuração
-client_id='9a32d2af58a341108b4fedbba08cf8f4'
-client_secret='7aee168243824c919318dbc47175fb72'
-redirect_uri='http://localhost:8888/callback'
+client_id = os.getenv('CLIENT_ID')
+client_secret = os.getenv('CLIENT_SECRET')
+redirect_uri = os.getenv('REDIRECT_URI')
 
 # Criação de um objeto de autenticação do Spotify
 scope = 'playlist-modify-public'
