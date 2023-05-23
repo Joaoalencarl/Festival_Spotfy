@@ -20,7 +20,7 @@ class EventPlaylistCreator(PlaylistManager):
         for artist in artists:
             results = self.sp.search(q='artist:' + artist, type='artist', limit=1)
             if len(results['artists']['items']) > 0:
-                artist_id = results['artists']['items'][0]['id']['BR']
+                artist_id = results['artists']['items'][0]['id']
                 top_tracks = self.sp.artist_top_tracks(artist_id)
                 track_uris = [track['uri'] for track in top_tracks['tracks'][:10]]
                 self.add_tracks_to_playlist(playlist_id, track_uris)
