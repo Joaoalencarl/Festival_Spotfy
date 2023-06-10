@@ -1,6 +1,10 @@
 from playlist_manager import PlaylistManager
 
 
+class InvalidUserException(Exception):
+    pass
+
+
 class EventPlaylistCreator(PlaylistManager):
     def collect_artist_information(self):
         artists = input("Digite o nome dos artistas (separados por vírgula): ").split(',')
@@ -16,6 +20,11 @@ class EventPlaylistCreator(PlaylistManager):
             public=True
         )
         playlist_id = playlist['id']
+
+        try:
+            user_info = self.sp.user(user)
+        except spotipy.exceptions.SpotifyException:
+            raise InvalidUserException("Usuário inválido. Não foi possível obter informações do usuário.")
 
         for artist in artists:
             results = self.sp.search(q='artist:' + artist, type='artist', limit=1)
